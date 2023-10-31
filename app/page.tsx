@@ -1,7 +1,11 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import Image from "next/image";
+import styles from "./page.module.css";
+import { useRouter } from "next/navigation";
+import Script from "next/script";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -15,7 +19,6 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
             <Image
               src="/vercel.svg"
               alt="Vercel Logo"
@@ -37,6 +40,7 @@ export default function Home() {
           height={37}
           priority
         />
+        <button onClick={() => router.push("/blog/111/")}>Test routing</button>
       </div>
 
       <div className={styles.grid}>
@@ -90,6 +94,7 @@ export default function Home() {
           </p>
         </a>
       </div>
+      <Script src="https://connect.facebook.net/en_US/sdk.js" strategy='beforeInteractive' />
     </main>
-  )
+  );
 }
